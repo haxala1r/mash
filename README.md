@@ -23,15 +23,17 @@ on the compiler itself
 
 ## Development
 
-I use clangd as the language server. Appropriate `compile_commands.json`
-(required for clangd, otherwise it can not find include files) is provided.
-If you'd like to generate them yourself, just use cmake:
+I use clangd as the language server. If you want your include files to be handled
+correctly, you'll need to generate `compile_commands.json` yourself. You can
+do this using cmake:
 
 ```bash
 cd build
 cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=1 ..
 cp compile_commands.json ../
 ```
+
+After this, clangd should not give you errors on every included header.
 
 ## Progress
 
