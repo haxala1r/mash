@@ -19,9 +19,8 @@ enum TokenType {
 struct Token {
     enum TokenType type;
     std::variant<int64_t, double, std::string> value;
-
-    bool operator==(Token const& other);
 };
+bool operator==(Token const& one, Token const& other);
 std::ostream &operator<<(std::ostream &os, Token const &t);
 
 class Lexer {

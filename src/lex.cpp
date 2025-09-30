@@ -23,8 +23,8 @@ std::ostream &operator<<(std::ostream &os, Token const &t) {
     return os;
 }
 
-bool Token::operator==(Token const& other) {
-    return this->type == other.type && this->value == other.value; 
+bool operator==(Token const& one, Token const& other) {
+    return one.type == other.type && one.value == other.value; 
 }
 
 bool ispunct(char c) {
@@ -65,9 +65,10 @@ Token Lexer::lexNumOrSym() {
     // ... this will almost certainly change, won't it?
     string s = acc.str();
     string iterate_over = (s.at(0) == '-') ? s.substr(1) : s;
-    bool is_number = true;
+    bool is_number = false;
     bool dot_seen = false;
-    for (char c : s) {
+    for (char c : iterate_over) {
+        
         if (c == '.') {
             if (dot_seen) {
                 is_number = false;
@@ -76,14 +77,16 @@ Token Lexer::lexNumOrSym() {
             dot_seen = true;
             continue;
         }
-        if (!isdigit(c)) {
+        if (isdigit(c)) {
+            is_number = true;
+        } else {
             is_number = false;
             break;
         }
     }
 
     if (is_number && dot_seen) {
-        if (s == ".")
+        if (iterate_over == ".")
             return {TokenType::Symbol, s};
         return {TokenType::Double, stod(s)};
     } else if (is_number) {
