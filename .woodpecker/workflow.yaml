@@ -13,6 +13,8 @@ steps:
   - name: test
     image: ubuntu
     commands:
-      # TODO: Probably make actual tests at some point
+      # Automated tests, this should not fail
+      - ./test
+      # Manual test, you can see the output of this in woodpecker
       - echo "(print 42)" | ./build/main
   # TODO: add publish step, when we're at a working state.
