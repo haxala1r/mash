@@ -23,6 +23,10 @@ std::ostream &operator<<(std::ostream &os, Token const &t) {
     return os;
 }
 
+bool Token::operator==(Token const& other) {
+    return this->type == other.type && this->value == other.value; 
+}
+
 bool ispunct(char c) {
     for (char i : "!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~") {
         if (i == c) return true;
