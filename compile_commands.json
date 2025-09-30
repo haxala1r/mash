@@ -1,0 +1,8 @@
+[
+{
+  "directory": "/home/haxala1r/Desktop/Programming/C++/lispy-stuff/build",
+  "command": "/usr/bin/c++  -I/home/haxala1r/Desktop/Programming/C++/lispy-stuff/src/include  -o CMakeFiles/main.dir/src/main.cpp.o -c /home/haxala1r/Desktop/Programming/C++/lispy-stuff/src/main.cpp",
+  "file": "/home/haxala1r/Desktop/Programming/C++/lispy-stuff/src/main.cpp",
+  "output": "CMakeFiles/main.dir/src/main.cpp.o"
+}
+]
