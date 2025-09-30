@@ -11,13 +11,14 @@ enum TokenType {
     Symbol,
     String,
     Int,
+    Double,
     End
 };
 
 // Plain Old Data
 struct Token {
     enum TokenType type;
-    std::variant<int64_t, std::string> value;
+    std::variant<int64_t, double, std::string> value;
 };
 std::ostream &operator<<(std::ostream &os, Token const &t);
 

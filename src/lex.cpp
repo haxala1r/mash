@@ -1,10 +1,8 @@
-#include <cstdlib>
 #include <exception>
 #include <iostream>
 #include <lex.hpp>
 #include <string>
 #include <cctype>
-#include <cstring>
 
 using namespace std;
 
@@ -17,6 +15,7 @@ std::ostream &operator<<(std::ostream &os, Token const &t) {
     case TokenType::Symbol: os << "Symbol, " << get<string>(t.value) << ")"; break;
     case TokenType::String: os << "String, \"" << get<string>(t.value) << "\")"; break;
     case TokenType::Int: os << "Int, " << get<int64_t>(t.value) << ")"; break;
+    case TokenType::Double: os << "Double, " << get<double>(t.value) << ")"; break;
     case TokenType::End: os << "END)"; break;
     default:
         os << ")";
@@ -71,6 +70,7 @@ Token Lexer::lexNumOrSym() {
                 break;
             }
             dot_seen = true;
+            continue;
         }
         if (!isdigit(c)) {
             is_number = false;
@@ -78,8 +78,12 @@ Token Lexer::lexNumOrSym() {
         }
     }
 
-    if (is_number) {
-        return {TokenType::Int, atoll(s.c_str())};
+    if (is_number && dot_seen) {
+        if (s == ".")
+            return {TokenType::Symbol, s};
+        return {TokenType::Double, stod(s)};
+    } else if (is_number) {
+        return {TokenType::Int, stoll(s)};
     }
     return {TokenType::Symbol, s};
 }
