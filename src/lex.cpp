@@ -8,6 +8,22 @@
 
 using namespace std;
 
+std::ostream &operator<<(std::ostream &os, Token const &t) { 
+    os << "Token(";
+    switch (t.type) {
+    case TokenType::OpenParen: os << "OpenParen)"; break;
+    case TokenType::CloseParen: os << "CloseParen)"; break;
+    case TokenType::Dollar: os << "Dollar)"; break;
+    case TokenType::Symbol: os << "Symbol, " << get<string>(t.value) << ")"; break;
+    case TokenType::String: os << "String, \"" << get<string>(t.value) << "\")"; break;
+    case TokenType::Int: os << "Int, " << get<int64_t>(t.value) << ")"; break;
+    case TokenType::End: os << "END)"; break;
+    default:
+        os << ")";
+    }
+    return os;
+}
+
 bool ispunct(char c) {
     for (char i : "!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~") {
         if (i == c) return true;

@@ -19,6 +19,7 @@ struct Token {
     enum TokenType type;
     std::variant<int64_t, std::string> value;
 };
+std::ostream &operator<<(std::ostream &os, Token const &t);
 
 class Lexer {
 private:
