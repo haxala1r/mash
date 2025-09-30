@@ -7,7 +7,7 @@ steps:
     image: gcc:latest
     commands: # we probably shouldn't install cmake every time
       - apt update && apt install -y cmake
-      - cd build
+      - mkdir -p build/ && cd build
       - cmake ..
       - make
   - name: test
