@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.16)
 project(lispy_stuff)
 
 set(HEADER_FILES src/include/lex.hpp)
-set(SOURCE_FILES src/main.cpp)
+set(SOURCE_FILES src/main.cpp src/lex.cpp)
 
 
 add_executable(main ${SOURCE_FILES} ${HEADER_FILES})
