@@ -7,6 +7,7 @@
 enum TokenType {
     OpenParen,
     CloseParen,
+    Dollar,
     Symbol,
     String,
     Int,
@@ -16,13 +17,17 @@ enum TokenType {
 // Plain Old Data
 struct Token {
     enum TokenType type;
-    std::variant<int, std::string> value;
+    std::variant<int64_t, std::string> value;
 };
 
 class Lexer {
 private:
     // we use a stringstream for lexing purposes
     std::stringstream ss;
+
+    Token lexNumOrSym();
+    Token lexString();
+    Token lexNonSpecial();
 
 public:
     Lexer(std::string);
