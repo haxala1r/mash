@@ -14,7 +14,7 @@ steps:
     image: ubuntu
     commands:
       # Automated tests, this should not fail
-      - ./test
+      - ./build/test
       # Manual test, you can see the output of this in woodpecker
       - echo "(print 42)" | ./build/main
   # TODO: add publish step, when we're at a working state.
