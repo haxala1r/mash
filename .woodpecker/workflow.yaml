@@ -1,0 +1,18 @@
+when:
+  - event: push
+  - event: tag
+
+steps:
+  - name: build
+    image: gcc:latest
+    commands: # we probably shouldn't install cmake every time
+      - apt update && apt install -y cmake
+      - cd build
+      - cmake ..
+      - make
+  - name: test
+    image: ubuntu
+    commands:
+      # TODO: Probably make actual tests at some point
+      - echo "(print 42)" | ./main
+  # TODO: add publish step, when we're at a working state.
