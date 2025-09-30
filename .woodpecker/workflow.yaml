@@ -14,5 +14,5 @@ steps:
     image: ubuntu
     commands:
       # TODO: Probably make actual tests at some point
-      - echo "(print 42)" | ./main
+      - echo "(print 42)" | ./build/main
   # TODO: add publish step, when we're at a working state.
