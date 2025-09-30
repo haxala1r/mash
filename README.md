@@ -1,9 +1,11 @@
 # Lispy stuff
 
+[![status-badge](https://ci.emin.software/api/badges/2/status.svg)](https://ci.emin.software/repos/2)
+
 Simple lisp-ish language compiler written in C++.
 
 Right now it doesn't compile much - it's just a parser.
-The goal is to emit bytecode. The bytecode format is not decided yet.
+The end goal is to emit bytecode. The bytecode format is not decided yet.
 
 ## Build
 
@@ -15,6 +17,9 @@ cd build
 cmake ..
 make
 ```
+
+This will build two executables, `main` and `test`. `test` runs all tests
+on the compiler itself
 
 ## Development
 
@@ -28,4 +33,13 @@ cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=1 ..
 cp compile_commands.json ../
 ```
 
+## Progress
+
+Woodpecker CI/CD system is integrated.
+Currently using Catch2 for unit testing.
+
+Lexing - complete, more token types may be added as necessary
+Parsing - This is the next step.
+Optimizations - 
+Emitting Bytecode - the goal.
 
