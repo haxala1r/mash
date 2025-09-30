@@ -40,8 +40,8 @@ After this, clangd should not give you errors on every included header.
 Woodpecker CI/CD system is integrated.
 Currently using Catch2 for unit testing.
 
-Lexing - complete, more token types may be added as necessary
-Parsing - This is the next step.
-Optimizations - 
-Emitting Bytecode - the goal.
+- Lexing - complete, more token types may be added as necessary
+- Parsing - This is the next step.
+- Optimizations - 
+- Emitting Bytecode - the goal.
 
