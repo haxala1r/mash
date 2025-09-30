@@ -5,6 +5,10 @@
 using namespace std;
 
 int main() {
-    cout << "hi " << endl;
+    string s;
+    cin >> s;
+    
+    Lexer l(s);
+    cout << l.next() << endl;
     return 0;
 }
