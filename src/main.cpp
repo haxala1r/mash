@@ -1,14 +1,17 @@
 #include <iostream>
 #include <lex.hpp>
-#include <sstream>
+#include <string>
 
 using namespace std;
 
 int main() {
     string s;
-    cin >> s;
+    getline(cin, s);
+    cout << s << endl;
     
-    Lexer l(s);
-    cout << l.next() << endl;
+    for (auto t : lex(s)) {
+        cout << t << " ";
+    }
+    cout << endl;
     return 0;
 }

@@ -135,5 +135,19 @@ Token Lexer::next() {
     }
 }
 
+vector<Token> Lexer::collect() {
+    vector<Token> v;
+    while (true) {
+        Token t = next();
+        if (t.type == TokenType::End)
+            break;
 
+        v.push_back(t);
+    }
+    return v;
+}
 
+std::vector<Token> lex(std::string s) {
+    Lexer l(s);
+    return l.collect();
+}

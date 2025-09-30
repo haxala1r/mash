@@ -40,3 +40,5 @@ public:
     std::vector<Token> collect();
 };
 
+// when you don't want to construct the object
+std::vector<Token> lex(std::string);
