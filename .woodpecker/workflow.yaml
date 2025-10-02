@@ -8,7 +8,7 @@ steps:
     commands: # we probably shouldn't install cmake every time
       - apt update && apt install -y cmake
       - mkdir -p build/ && cd build
-      - cmake ..
+      - cmake .. --toolchain ../toolchain/sanitize.cmake
       - make
   - name: test
     image: ubuntu

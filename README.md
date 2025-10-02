@@ -9,6 +9,11 @@ The end goal is to emit bytecode. The bytecode format is not decided yet.
 
 ## Build
 
+All you need is:
+
+- CMake
+- An appropriate C++ compiler
+
 I use cmake for the build system. I prefer to build out-of-tree,
 here's how to build if you've never used cmake:
 
@@ -34,6 +39,23 @@ cp compile_commands.json ../
 ```
 
 After this, clangd should not give you errors on every included header.
+
+### Toolchain
+
+C++ can be somewhat error-prone, so in order to reduce the possibility of
+certain bugs, cmake toolchain options are provided that build the project
+with the undefined behaviour sanitizer and the address sanitizer.
+
+You can build a sanitized version like this:
+
+```
+cd build
+cmake .. --toolchain ../toolchain/sanitize.cmake
+make
+```
+
+Catch2 testing framework is used to maintain code correctness.
+
 
 ## Progress
 
