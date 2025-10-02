@@ -13,9 +13,9 @@ All you need is:
 
 - CMake
 - An appropriate C++ compiler
+- The [Catch2](https://github.com/catchorg/Catch2) library v3 or higher installed on your system
 
-I use cmake for the build system. I prefer to build out-of-tree,
-here's how to build if you've never used cmake:
+Once you have these, you can build with:
 
 ```bash
 cd build
@@ -24,7 +24,7 @@ make
 ```
 
 This will build two executables, `main` and `test`. `test` runs all tests
-on the compiler itself
+on the compiler itself.
 
 ## Development
 
