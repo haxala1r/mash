@@ -12,10 +12,10 @@ std::ostream &operator<<(std::ostream &os, Token const &t) {
     case TokenType::OpenParen: os << "OpenParen)"; break;
     case TokenType::CloseParen: os << "CloseParen)"; break;
     case TokenType::Dollar: os << "Dollar)"; break;
-    case TokenType::Symbol: os << "Symbol, " << get<string>(t.value) << ")"; break;
-    case TokenType::String: os << "String, \"" << get<string>(t.value) << "\")"; break;
-    case TokenType::Int: os << "Int, " << get<int64_t>(t.value) << ")"; break;
-    case TokenType::Double: os << "Double, " << get<double>(t.value) << ")"; break;
+    case TokenType::Symbol: os << "Symbol, " << get<string>(*t.value) << ")"; break;
+    case TokenType::String: os << "String, \"" << get<string>(*t.value) << "\")"; break;
+    case TokenType::Int: os << "Int, " << get<int64_t>(*t.value) << ")"; break;
+    case TokenType::Double: os << "Double, " << get<double>(*t.value) << ")"; break;
     case TokenType::End: os << "END)"; break;
     default:
         os << ")";
@@ -131,14 +131,14 @@ Token Lexer::next() {
         // character while at EOF, even if we have exhausted the stream.
         char c = ss.get();
         if (ss.eof())
-            return {TokenType::End};
+            return {TokenType::End, nullopt};
 
         if (isspace(c))
             continue;
         switch (c) {
-        case '(': return {TokenType::OpenParen};
-        case ')': return {TokenType::CloseParen};
-        case '$': return {TokenType::Dollar};
+        case '(': return {TokenType::OpenParen, nullopt};
+        case ')': return {TokenType::CloseParen, nullopt};
+        case '$': return {TokenType::Dollar, nullopt};
         default:
             ss.unget();
             return lexNonSpecial();

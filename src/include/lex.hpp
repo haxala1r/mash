@@ -3,6 +3,7 @@
 #include <vector>
 #include <stdint.h>
 #include <variant>
+#include <optional>
 
 enum TokenType {
     OpenParen,
@@ -18,7 +19,7 @@ enum TokenType {
 // Plain Old Data
 struct Token {
     enum TokenType type;
-    std::variant<int64_t, double, std::string> value;
+    std::optional<std::variant<int64_t, double, std::string>> value;
 };
 bool operator==(Token const& one, Token const& other);
 std::ostream &operator<<(std::ostream &os, Token const &t);
