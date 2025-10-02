@@ -1,20 +1,13 @@
 cmake_minimum_required(VERSION 3.16)
 project(lispy_stuff)
+# we'll use catch2 as testing library.
+# Catch2 version 3 or above needs to be installed on your system.
+find_package(Catch2 3 REQUIRED)
 
 # we'll use a recent c++ standard.
 set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-# we'll use catch2 as testing library.
-include(FetchContent)
-FetchContent_Declare(
-    Catch2
-    GIT_REPOSITORY https://github.com/catchorg/Catch2.git
-    GIT_TAG        v3.8.1
-)
-FetchContent_MakeAvailable(Catch2)
-list(APPEND CMAKE_MODULE_PATH ${catch2_SOURCE_DIR}/extras)
-include(Catch)
 
 set(HEADER_FILES src/include/lex.hpp)
 set(SOURCE_FILES src/lex.cpp)

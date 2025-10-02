@@ -6,12 +6,12 @@ steps:
   - name: build
     image: gcc:latest
     commands: # we probably shouldn't install cmake every time
-      - apt update && apt install -y cmake
+      - apt update && apt install -y cmake catch2
       - mkdir -p build/ && cd build
       - cmake .. --toolchain ../toolchain/sanitize.cmake
       - make
   - name: test
-    image: ubuntu
+    image: gcc:latest
     commands:
       # Automated tests, this should not fail
       - ./build/test
