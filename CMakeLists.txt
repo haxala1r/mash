@@ -9,8 +9,8 @@ set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 
-set(HEADER_FILES src/include/lex.hpp)
-set(SOURCE_FILES src/lex.cpp)
+set(HEADER_FILES src/include/lex.hpp src/include/value.hpp src/include/parse.hpp)
+set(SOURCE_FILES src/lex.cpp src/parse.cpp src/value.cpp)
 set(CXX_WARNING_FLAGS -Wall -Wextra -Wpedantic -pedantic)
 
 # we're not actually shipping a library yet,

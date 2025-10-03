@@ -9,14 +9,14 @@ using namespace std;
 std::ostream &operator<<(std::ostream &os, Token const &t) { 
     os << "Token(";
     switch (t.type) {
-    case OpenParen: os << "OpenParen)"; break;
-    case CloseParen: os << "CloseParen)"; break;
-    case Dollar: os << "Dollar)"; break;
-    case Symbol: os << "Symbol, " << get<string>(*t.value) << ")"; break;
-    case String: os << "String, \"" << get<string>(*t.value) << "\")"; break;
-    case Int: os << "Int, " << get<int64_t>(*t.value) << ")"; break;
-    case Double: os << "Double, " << get<double>(*t.value) << ")"; break;
-    case End: os << "END)"; break;
+    case TokenType::OpenParen: os << "OpenParen)"; break;
+    case TokenType::CloseParen: os << "CloseParen)"; break;
+    case TokenType::Dollar: os << "Dollar)"; break;
+    case TokenType::Symbol: os << "Symbol, " << get<string>(*t.value) << ")"; break;
+    case TokenType::String: os << "String, \"" << get<string>(*t.value) << "\")"; break;
+    case TokenType::Int: os << "Int, " << get<int64_t>(*t.value) << ")"; break;
+    case TokenType::Double: os << "Double, " << get<double>(*t.value) << ")"; break;
+    case TokenType::End: os << "END)"; break;
     default:
         os << ")";
     }

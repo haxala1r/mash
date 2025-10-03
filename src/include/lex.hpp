@@ -1,12 +1,11 @@
 #pragma once
 #include <deque>
 #include <sstream>
-#include <vector>
 #include <stdint.h>
 #include <variant>
 #include <optional>
 
-enum TokenType {
+enum class TokenType {
     OpenParen,
     CloseParen,
     Dollar,
