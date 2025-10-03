@@ -1,7 +1,7 @@
 #pragma once
 
 #include <concepts>
-#include <vector>
+#include <deque>
 #include <cstdint>
 #include <string>
 #include <variant>
@@ -17,7 +17,7 @@ struct Nil {};
 
 
 using LispValue = std::variant<Integer, Double, String, Symbol, List>;
-struct List {std::vector<LispValue> list;};
+struct List {std::deque<LispValue> list;};
 // during compilation, we don't really care for cyclical lists etc.
 // during compilation we'll mostly be dealing with regular, flat lists
 // that form function calls.
