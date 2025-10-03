@@ -20,6 +20,7 @@ private:
 
 
     std::optional<LispValue> parse_one();
+    LispValue parse_quote();
     LispValue parse_list();
 
 public:

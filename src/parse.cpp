@@ -1,3 +1,4 @@
+#include <exception>
 #include <lex.hpp>
 
 #include <parse.hpp>
@@ -13,6 +14,10 @@ void Parser::feed(Lexer l) {
 }
 
 Token Parser::get_token() {
+    if (ts.empty()) {
+        cerr << "Parser::get_token: Token requested at input end." << endl;
+        throw exception();
+    }
     Token t = ts.front();
     ts.pop_front();
     return t;
@@ -29,6 +34,22 @@ Symbol Parser::make_symbol(string s) {
     return Symbol {s};
 }
 
+LispValue Parser::parse_quote() {
+    // in regular lisps, a quote gets expanded to a (quote) form.
+    // i.e. 'a is actually (QUOTE A). This prevents the symbol from being
+    // evaluated.
+    // This is the same way we'll handle quotes for now, because I can't
+    // think of anything else.
+    List l;
+
+    l.list.push_back(make_symbol("QUOTE"));
+    auto next = parse_one();
+    // this is guaranteed to work, because if we do not have enough tokens
+    // to constitute another value Parser::get_token will throw an exception
+    l.list.push_back(*next);
+    return l;
+}
+
 optional<LispValue> Parser::parse_one() {
     Token t = get_token();
     switch (t.type) {
@@ -38,6 +59,7 @@ optional<LispValue> Parser::parse_one() {
     case TokenType::Symbol: return make_symbol(get<string>(*t.value));
     case TokenType::OpenParen: return parse_list();
     case TokenType::CloseParen: throw "whatever";
+    case TokenType::Quote: return parse_quote();
 
     // I don't know what this will actually do, in theory maybe just like the OpenParen,
     // but parses things in a different namespace? unimplemented for now.

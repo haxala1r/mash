@@ -12,6 +12,7 @@ std::ostream &operator<<(std::ostream &os, Token const &t) {
     case TokenType::OpenParen: os << "OpenParen)"; break;
     case TokenType::CloseParen: os << "CloseParen)"; break;
     case TokenType::Dollar: os << "Dollar)"; break;
+    case TokenType::Quote: os << "QUOTE)"; break;
     case TokenType::Symbol: os << "Symbol, " << get<string>(*t.value) << ")"; break;
     case TokenType::String: os << "String, \"" << get<string>(*t.value) << "\")"; break;
     case TokenType::Int: os << "Int, " << get<int64_t>(*t.value) << ")"; break;
@@ -139,6 +140,7 @@ Token Lexer::next() {
         case '(': return {TokenType::OpenParen, nullopt};
         case ')': return {TokenType::CloseParen, nullopt};
         case '$': return {TokenType::Dollar, nullopt};
+        case '\'': return {TokenType::Quote, nullopt};
         default:
             ss.unget();
             return lexNonSpecial();

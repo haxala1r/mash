@@ -13,6 +13,7 @@ enum class TokenType {
     String,
     Int,
     Double,
+    Quote,
     End
 };
 
