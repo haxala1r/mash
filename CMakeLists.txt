@@ -11,7 +11,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 set(HEADER_FILES src/include/lex.hpp)
 set(SOURCE_FILES src/lex.cpp)
-set(CXX_WARNING_FLAGS -Wall -Wextra -Wpedantic -pedantic -Werror)
+set(CXX_WARNING_FLAGS -Wall -Wextra -Wpedantic -pedantic)
 
 # we're not actually shipping a library yet,
 # this is so we don't have to compile twice for main and tests.

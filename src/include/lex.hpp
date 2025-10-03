@@ -1,4 +1,5 @@
 #pragma once
+#include <deque>
 #include <sstream>
 #include <vector>
 #include <stdint.h>
@@ -40,8 +41,8 @@ public:
     void feed(std::string);
     
     Token next();
-    std::vector<Token> collect();
+    std::deque<Token> collect();
 };
 
 // when you don't want to construct the object
-std::vector<Token> lex(std::string);
+std::deque<Token> lex(std::string);
