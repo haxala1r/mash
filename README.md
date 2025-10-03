@@ -63,7 +63,7 @@ Woodpecker CI/CD system is integrated.
 Currently using Catch2 for unit testing.
 
 - Lexing - complete, more token types may be added as necessary
-- Parsing - This is the next step.
+- Parsing - the main steps are done, but things may change as time progresses
 - Optimizations - 
 - Emitting Bytecode - the goal.
 
