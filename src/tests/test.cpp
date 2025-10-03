@@ -32,7 +32,7 @@ TEST_CASE("Parser parses correctly", "[Parser]") {
     SECTION("hello world") {
         Parser p (Lexer("(print \"hello world\")"));
         auto dq = get<List>(*p.next()).list;
-        REQUIRE(get<Symbol>(pop_and_front(dq)).value == "print");
+        REQUIRE(get<Symbol>(pop_and_front(dq)).value == "PRINT");
         REQUIRE(get<String>(pop_and_front(dq)).value == "hello world");
     }
     SECTION("doubles") {
@@ -62,6 +62,26 @@ TEST_CASE("Parser parses correctly", "[Parser]") {
         REQUIRE(get<Integer>(pop_and_front(l21)).value == 1);
         REQUIRE(get<Integer>(pop_and_front(l22)).value == 2);
         REQUIRE(get<Integer>(pop_and_front(l23)).value == 3);
+    }
+    SECTION("Nested quotes") {
+        Parser p(Lexer("((('a 'b 'c 'd)))"));
+        auto l0 = get<List>(*p.next()).list;
+        auto l1 = get<List>(pop_and_front(l0)).list;
+        auto l2 = get<List>(pop_and_front(l1)).list;
+
+        auto l20 = get<List>(pop_and_front(l2)).list;
+        auto l21 = get<List>(pop_and_front(l2)).list;
+        auto l22 = get<List>(pop_and_front(l2)).list;
+        auto l23 = get<List>(pop_and_front(l2)).list;
+
+        REQUIRE(get<Symbol>(pop_and_front(l20)).value == "QUOTE");
+        REQUIRE(get<Symbol>(pop_and_front(l20)).value == "A");
+        REQUIRE(get<Symbol>(pop_and_front(l21)).value == "QUOTE");
+        REQUIRE(get<Symbol>(pop_and_front(l21)).value == "B");
+        REQUIRE(get<Symbol>(pop_and_front(l22)).value == "QUOTE");
+        REQUIRE(get<Symbol>(pop_and_front(l22)).value == "C");
+        REQUIRE(get<Symbol>(pop_and_front(l23)).value == "QUOTE");
+        REQUIRE(get<Symbol>(pop_and_front(l23)).value == "D");
     }
 }
 

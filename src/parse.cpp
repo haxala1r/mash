@@ -1,6 +1,8 @@
+#include <cctype>
 #include <exception>
 #include <lex.hpp>
 
+#include <algorithm>
 #include <parse.hpp>
 
 #include <iostream>
@@ -31,6 +33,7 @@ String Parser::make_string(string s) {
 }
 
 Symbol Parser::make_symbol(string s) {
+    transform(s.begin(), s.end(), s.begin(), ::toupper);
     return Symbol {s};
 }
 
