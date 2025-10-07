@@ -12,7 +12,7 @@ The end goal is to emit bytecode. The bytecode format is not decided yet.
 All you need is:
 
 - CMake
-- An appropriate C++ compiler
+- A modern C++ compiler
 - The [Catch2](https://github.com/catchorg/Catch2) library v3 or higher installed on your system
 
 Once you have these, you can build with:
