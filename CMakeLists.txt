@@ -5,7 +5,7 @@ project(lispy_stuff)
 find_package(Catch2 3 REQUIRED)
 
 # we'll use a recent c++ standard.
-set(CMAKE_CXX_STANDARD 23)
+set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 
