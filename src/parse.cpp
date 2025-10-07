@@ -11,8 +11,9 @@ using namespace std;
 
 Parser::Parser(Lexer l) : ts(l.collect()) {}
 
-void Parser::feed(Lexer l) {
-    ts.append_range(l.collect());
+void Parser::feed(Lexer lexer) {
+    auto l = lexer.collect();
+    ts.insert(ts.end(), l.begin(), l.end());
 }
 
 Token Parser::get_token() {
