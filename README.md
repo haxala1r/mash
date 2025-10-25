@@ -1,7 +1,5 @@
 # Lispy stuff
 
-[![status-badge](https://ci.emin.software/api/badges/2/status.svg)](https://ci.emin.software/repos/2)
-
 Simple lisp-ish language compiler written in C++.
 
 Right now it doesn't compile much - it's just a parser.
